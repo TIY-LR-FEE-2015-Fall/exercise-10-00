@@ -40,3 +40,32 @@ test('User can add a language', function(assert) {
     assert.equal(newLanguageField.val(), '');
   });
 });
+
+test('User can delete the last language', function(assert) {
+  visit('/profile');
+
+  click('.language-input-delete');
+
+  andThen(function() {
+    var languageField = find('.language-input--existing');
+    findWithAssert('.language-input--new');
+
+    assert.equal(languageField.length, 0);
+  });
+});
+
+test('User can delete the a language after creating one', function(assert) {
+  visit('/profile');
+
+  fillIn('.language-input--new', 'Spanish');
+  click('.language-input-save');
+  click('.language-input-delete[data-language=English]');
+
+  andThen(function() {
+    var languageField = findWithAssert('.language-input--existing');
+    findWithAssert('.language-input--new');
+
+    assert.equal(languageField.length, 1);
+    assert.equal(languageField.eq(0).val(), 'Spanish');
+  });
+});

@@ -1,7 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  languages: ['English'],
+  languages: [],
+
+  startLanguages: Ember.on('didReceiveAttrs', function() {
+    this.set('languages', this.get('startingLanguages'));
+  }),
 
   actions: {
     addLanguage() {
@@ -11,6 +15,13 @@ export default Ember.Component.extend({
       this.set('newLanguage', '');
 
       languages.pushObject(newLang);
+    },
+
+    removeLanguage(lang) {
+      let languages = this.get('languages');
+      console.log(lang);
+
+      languages.removeObject(lang);
     },
   },
 });

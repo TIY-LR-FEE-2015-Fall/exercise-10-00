@@ -2,6 +2,7 @@
 
 {{#each languages as |language|}}
   {{input class="language-input language-input--existing" value=language disabled=true}}
+  <button class="language-input-delete" data-language="{{language}}" onclick={{action "removeLanguage" language}}>X</button>
 {{/each}}
 
 {{input class="language-input language-input--new" value=newLanguage}}
