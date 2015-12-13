@@ -5,12 +5,12 @@ export default Ember.Component.extend({
 
   actions: {
     addLanguage() {
-      let newLang = this.$('.language-input--new').val();
-
+      let newLang = this.get('newLanguage');
       let languages = this.get('languages');
-      languages.pushObject(newLang);
 
-      this.$('.language-input--new').val('');
+      this.set('newLanguage', '');
+
+      languages.pushObject(newLang);
     },
   },
 });
