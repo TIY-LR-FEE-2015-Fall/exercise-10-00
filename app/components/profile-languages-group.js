@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   languages: [],
 
   startLanguages: Ember.on('didReceiveAttrs', function() {
-    this.set('languages', this.get('startingLanguages'));
+    this.set('languages', this.get('startingLanguages') || []);
   }),
 
   actions: {
