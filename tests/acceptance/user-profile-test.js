@@ -21,7 +21,7 @@ test('User can see profile form', function(assert) {
 
     assert.equal(emailField.val(), 'admin@example.com');
     assert.equal(languageField.val(), 'English');
-    assert.ok(languageCount.text().indexOf('1 Language Saved') > -1, 'User can see language count');
+    assert.ok(languageCount.text().indexOf('1 Languages Saved') > -1, 'User can see language count');
   });
 });
 
@@ -34,10 +34,12 @@ test('User can add a language', function(assert) {
   andThen(function() {
     var languageField = findWithAssert('.language-input--existing');
     var newLanguageField = findWithAssert('.language-input--new');
+    var languageCount = findWithAssert('.language-count');
 
     assert.equal(languageField.length, 2);
     assert.equal(languageField.eq(1).val(), 'Spanish');
     assert.equal(newLanguageField.val(), '');
+    assert.ok(languageCount.text().indexOf('2 Languages Saved') > -1, 'User can see language count');
   });
 });
 
