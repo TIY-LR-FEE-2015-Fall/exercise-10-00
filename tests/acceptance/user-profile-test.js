@@ -33,7 +33,10 @@ test('User can add a language', function(assert) {
 
   andThen(function() {
     var languageField = findWithAssert('.language-input--existing');
+    var newLanguageField = findWithAssert('.language-input--new');
 
     assert.equal(languageField.length, 2);
+    assert.equal(languageField.eq(1).val(), 'Spanish');
+    assert.equal(newLanguageField.val(), '');
   });
 });

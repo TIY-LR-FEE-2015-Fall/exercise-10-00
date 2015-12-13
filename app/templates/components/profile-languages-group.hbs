@@ -1,5 +1,8 @@
 <span class="language-count">1 Language Saved</span>
 
-{{input class="language-input language-input--existing" value="English"}}
+{{#each languages as |language|}}
+  {{input class="language-input language-input--existing" value=language disabled=true}}
+{{/each}}
+
 {{input class="language-input language-input--new"}}
 <button class="language-input-save" onclick={{action "addLanguage"}}>+</button>
