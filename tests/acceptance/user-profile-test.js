@@ -51,8 +51,10 @@ test('User can delete the last language', function(assert) {
   andThen(function() {
     var languageField = find('.language-input--existing');
     findWithAssert('.language-input--new');
+    var languageCount = findWithAssert('.language-count');
 
     assert.equal(languageField.length, 0);
+    assert.ok(languageCount.text().indexOf('0 Languages Saved') > -1, 'User can see language count');
   });
 });
 
@@ -66,8 +68,10 @@ test('User can delete the a language after creating one', function(assert) {
   andThen(function() {
     var languageField = findWithAssert('.language-input--existing');
     findWithAssert('.language-input--new');
+    var languageCount = findWithAssert('.language-count');
 
     assert.equal(languageField.length, 1);
     assert.equal(languageField.eq(0).val(), 'Spanish');
+    assert.ok(languageCount.text().indexOf('1 Languages Saved') > -1, 'User can see language count');
   });
 });
